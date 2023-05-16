@@ -1,0 +1,76 @@
+// signup the user into the database 
+POST http://localhost:5001/api/auth/signup
+content-type: application/json
+
+{
+"name":"Ashwani12",
+"email":"ashwani12@gmail.com",
+"password": "1234567",
+"phone":"918930485009"
+}
+
+// to login the user into the database 
+###
+POST http://localhost:5001/api/auth/login
+content-type: application/json
+
+{
+    "email":"Ashwani1234@gmail.com",
+    "password":"1234567"
+}
+
+// to logout the user into the database 
+###
+POST http://localhost:5001/api/auth/logout
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDYxZTBhM2IyYWQ2ODVhNDNmNmYzZmIiLCJuYW1lIjoiQXNod2FuaTM0IiwiZW1haWwiOiJBc2h3YW5pMTIzNEBnbWFpbC5jb20iLCJpYXQiOjE2ODQyMTYxNTEsImV4cCI6MTY4NDMwMjU1MX0.FzXPRHSDMHkODqv_epuPXtqgLSgbAeCagLzSb7I05UE
+
+// to make an admin into the database
+###
+POST http://localhost:5001/api/auth/admin?KEY=ankitkaushiksecretkey
+content-type: application/json
+
+{
+    "name": "Ashwani345",
+    "email":"Ashwani12345@gmail.com",
+    "password": "1234567",
+    "phone":"918930485009"
+}
+
+// to verify your account using the 6 word otp you received 
+###
+POST http://localhost:5001/api/auth/verify
+content-type: application/json
+
+{
+    "email":"Ashwani12345@gmail.com",
+    "otp":"113025"
+}
+
+// to create the question into the question bank 
+###
+POST http://localhost:5001/api/editor/create?_id=6461e0a3b2ad685a43f6f3fb
+content-type: application/json
+
+{
+    "title":" the javascript question here is ",
+    "option":["a","b","c","d"],
+    "answer":"a",
+    "type":"medium"
+}
+
+// to get all the question
+###
+GET http://localhost:5001/api/editor/get
+
+// get quesetion filtered by the easy 
+###
+GET http://localhost:5001/api/editor/get/easy
+
+// get quesetion filtered by the medium
+###
+GET http://localhost:5001/api/editor/get/medium
+
+// get quesetion filtered by the hard
+###
+GET http://localhost:5001/api/editor/get/hard
