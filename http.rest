@@ -3,38 +3,10 @@ POST http://localhost:5001/api/auth/signup
 content-type: application/json
 
 {
-"name":"Ashwani12",
-"email":"ashwani12@gmail.com",
-"password": "1234567",
+"name":"Ankit Kaushik 002",
+"email":"Ankitkaushik1@gmail.com",
+"password": "123123",
 "phone":"918930485009"
-}
-
-// to login the user into the database 
-###
-POST http://localhost:5001/api/auth/login
-content-type: application/json
-
-{
-    "email":"Ashwani1234@gmail.com",
-    "password":"1234567"
-}
-
-// to logout the user into the database 
-###
-POST http://localhost:5001/api/auth/logout
-content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDYxZTBhM2IyYWQ2ODVhNDNmNmYzZmIiLCJuYW1lIjoiQXNod2FuaTM0IiwiZW1haWwiOiJBc2h3YW5pMTIzNEBnbWFpbC5jb20iLCJpYXQiOjE2ODQyMTYxNTEsImV4cCI6MTY4NDMwMjU1MX0.FzXPRHSDMHkODqv_epuPXtqgLSgbAeCagLzSb7I05UE
-
-// to make an admin into the database
-###
-POST http://localhost:5001/api/auth/admin?KEY=ankitkaushiksecretkey
-content-type: application/json
-
-{
-    "name": "Ashwani345",
-    "email":"Ashwani12345@gmail.com",
-    "password": "1234567",
-    "phone":"918930485009"
 }
 
 // to verify your account using the 6 word otp you received 
@@ -43,20 +15,50 @@ POST http://localhost:5001/api/auth/verify
 content-type: application/json
 
 {
-    "email":"Ashwani12345@gmail.com",
-    "otp":"113025"
+    "email":"Ankitkaushik@gmail.com",
+    "otp":"540451"
 }
 
-// to create the question into the question bank 
+
+// to login the user into the database 
 ###
-POST http://localhost:5001/api/editor/create?_id=6461e0a3b2ad685a43f6f3fb
+POST http://localhost:5001/api/auth/login
 content-type: application/json
 
 {
-    "title":" the javascript question here is ",
+    "email":"Ankitkaushik@gmail.com",
+    "password":"123123"
+}
+
+// to logout the user into the database 
+###
+POST http://localhost:5001/api/auth/logout
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZjNWY3OTVjOGEwMzBmYmViODllOWEiLCJuYW1lIjoiQW5raXQgS2F1c2hpayAwMDEiLCJlbWFpbCI6IkFua2l0a2F1c2hpa0BnbWFpbC5jb20iLCJpYXQiOjE2ODQ4MjQwNjksImV4cCI6MTY4NDkxMDQ2OX0.5vM4tnFGfuIlf6qorza8ucVY-P88UUhf0OyxVguscOU
+
+// to make an admin into the database
+###
+POST http://localhost:5001/api/auth/admin?KEY=ankitkaushiksecretkey
+content-type: application/json
+
+{
+    "name": "testAdmin",
+    "email":"testAdmin@gmail.com",
+    "password": "1234567",
+    "phone":"918930485009"
+}
+
+
+// to create the question into the question bank - authorized only admin
+###
+POST http://localhost:5001/api/editor/create?_id=64648c377489abe4213ac945
+content-type: application/json
+
+{
+    "title":"3rd test question ",
     "option":["a","b","c","d"],
     "answer":"a",
-    "type":"medium"
+    "type":"hard"
 }
 
 // to get all the question

@@ -34,8 +34,13 @@ exports.verifyOtp = async (email, otp) => {
   if (user.otp !== otp) {
     throw new Error("Incorrect OTP");
   }
-  await User.findOneAndUpdate({ email }, { otp: "" }, { new: true });
-  return `singup SuccessFully ${user}`;
+  // await User.findOneAndUpdate({ email }, { otp: "", isActive }, { new: true });
+  // return `singup SuccessFully ${user}`;
+  user.otp = "";
+  user.isActive = true;
+  await user.save();
+
+  return `Signup Successful ${user}`;
 };
 
 exports.adminCreation = async (name, email, password, queryKey, phone) => {
@@ -61,7 +66,7 @@ exports.login = async (email, inputPassword) => {
   const user = await User.findOne({ email, isActive: true }).select(
     "+password"
   );
-  console.log("user " + user);
+
   if (!user) {
     throw new Error("User not found");
   }
@@ -76,11 +81,9 @@ exports.login = async (email, inputPassword) => {
       expiresIn: "1d",
     }
   );
-  console.log("token " + token);
-
   await User.findOneAndUpdate({ _id: user._id }, { token: token });
-
-  return token;
+  console.log(user._id);
+  return { userId: user._id, token };
 };
 
 exports.logout = async (id) => {

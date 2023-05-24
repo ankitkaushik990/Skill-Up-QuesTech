@@ -1,4 +1,3 @@
-// const Ques = require("../model/questionBank");
 const questionService = require("../service/edit_service");
 
 exports.questionCreate = async (req, res) => {

@@ -1,8 +1,9 @@
+const { verify } = require("jsonwebtoken");
 const Ques = require("../model/questionBank");
 
 const User = require("../model/user");
 
-verifyUser = async function (_id) {
+verifyAdmin = async function (_id) {
   console.log(`in verifying the question `);
   let user = await User.findById(_id);
   console.log(user);
@@ -14,7 +15,7 @@ verifyUser = async function (_id) {
 };
 
 exports.createQuestion = async (_id, title, option, answer, type) => {
-  await verifyUser(_id);
+  await verifyAdmin(_id);
   console.log(`in queston creation`);
   const ques = new Ques({ title, option, answer, type });
   await ques.save();
@@ -22,7 +23,7 @@ exports.createQuestion = async (_id, title, option, answer, type) => {
   return ques;
 };
 
-exports.getQuestion = async () => {
+exports.getQuestion = async (_id) => {
   return await Ques.find({}, { _id: 0, __v: 0, type: 0 });
 };
 
